@@ -1,7 +1,7 @@
 package com.example.quejapp.controller;
 
 import com.example.quejapp.model.Usuario;
-import com.example.quejapp.model.UsuarioRepository;
+import com.example.quejapp.model.repositories.UsuarioRepository;
 import com.example.quejapp.util.UsuarioModelAssembler;
 import com.example.quejapp.util.UsuarioNotFoundException;
 import org.springframework.hateoas.CollectionModel;

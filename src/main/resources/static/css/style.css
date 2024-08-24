@@ -1,0 +1,37 @@
+.light {
+    font-family: "Hind Siliguri", system-ui;
+    font-weight: 300;
+    font-style: normal;
+}
+  
+.regular {
+    font-family: "Hind Siliguri", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.medium {
+    font-family: "Hind Siliguri", system-ui;
+    font-weight: 500;
+    font-style: normal;
+}
+  
+.semibold {
+    font-family: "Hind Siliguri", system-ui;
+    font-weight: 600;
+    font-style: normal;
+}
+  
+.bold {
+    font-family: "Hind Siliguri", system-ui;
+    font-weight: 700;
+    font-style: normal;
+}
+
+  
+#barradenavegacion{
+    background-color: #F18A2B;
+}
+.naranja-transcaribe{
+    background-color: #F18A2B;
+}
