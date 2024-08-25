@@ -3,7 +3,10 @@ package com.example.quejapp.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 import java.util.Date;
 import java.util.Objects;
@@ -15,8 +18,16 @@ public class Queja {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
+
+    @NotNull(message="La descripción es un campo obligatorio, por favor comentenos su incidente.")
+    @Size(min=2, max=255,  message="la descripcion debe tener un minimo de información para ser valida.")
     private String descripcion;
+
+    @NotNull(message="Debe seleccionar el tipo de incidente")
     private Integer tipoQueja;
+
+    @NotNull(message="La ubicación es un campo obligatorio, por favor comentenos donde ocurrio el incidente.")
+    @Size(min=2, max=255, message = "la ubicación debe tener un minimo de información para ser valida.")
     private String ubicacion;
     private Long usuarioId;
 

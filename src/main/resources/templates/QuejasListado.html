@@ -15,39 +15,14 @@
 </head>
 <body class="regular">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<header id="barradenavegacion" class="p-3 mb-3 border-bottom">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-        <h4 class="text-white bold">QUEJAPP</h4>
-      </a>
-
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-1">
-        <li><a href="/complaint" class="nav-link px-2 link-secondary text-white">Nuevo</a></li>
-        <li><a href="/complaint/list" class="nav-link px-2 link-secondary text-white">Incidentes</a></li>
-      </ul>
-
-      <div class="dropdown text-end">
-        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-        </a>
-        <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="#">Configuración</a></li>
-          <li><a class="dropdown-item" href="#">Perfil</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</header>
+<div th:replace="~{/plantillas/BarraDeNavegacionTemplate :: navbar}"></div>
 
 <div class="container">
   <div class="row" th:unless="${#lists.isEmpty(todasLasQuejas)}">
 
     <h2 class="semibold">Lista de Quejas</h2>
 
-    <table class="table">
+    <table class="table table-striped">
       <thead>
       <tr>
         <th >FECHA</th>
