@@ -4,7 +4,7 @@
 Para construir y correr la aplicacion necesitas:
 - [JDK 22](https://www.oracle.com/co/java/technologies/downloads/#jdk22-windows)
 - [Maven 4](https://maven.apache.org)
--
+- [Spring boot 3.3.2](https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/3.3.2/)
 ## Como ejecutar la aplicacion:
 
 Hay varias formas de ejecutar una aplicación Spring Boot en su máquina local. Una forma es ejecutar el método `main`  en la clase`com.example.quejapp.QuejappApplication`  de aplicación desde su IDE.
