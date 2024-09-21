@@ -8,12 +8,10 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.thymeleaf.spring6.util.FieldUtils.hasErrors;
 
@@ -50,5 +48,38 @@ public class QuejaController {
         Queja nuevaQueja = repositorio.save(queja);
         model.addAttribute("queja", nuevaQueja);
         return "QuejaCompletada";
+    }
+
+    @GetMapping("/complaint/{id}")
+    public String buscarQueja(@PathVariable Long id, Model model) {
+        Optional<Queja> optionalQueja = repositorio.findById(id);
+        if (!optionalQueja.isPresent()) {
+            model.addAttribute("identificador",id);
+            return "QuejaNoEncontrada";
+        }
+        Queja queja = optionalQueja.get();
+        model.addAttribute("queja", queja);
+        return "QuejaModificar";
+    }
+
+    @PostMapping("/complaint/{id}")
+    public String modificarQueja(@PathVariable Long id,@Valid Queja queja, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "QuejaModificar";
+        }
+        Queja nuevaQueja = repositorio.save(queja);
+        model.addAttribute("queja", nuevaQueja);
+        return "QuejaCompletada";
+    }
+
+    @GetMapping("/complaint/delete/{id}")
+    public String eliminarQueja(@PathVariable Long id, Model model) {
+        Optional<Queja> optionalQueja = repositorio.findById(id);
+        if (!optionalQueja.isPresent()) {
+            model.addAttribute("identificador",id);
+            return "QuejaNoEncontrada";
+        }
+        repositorio.delete(optionalQueja.get());
+        return "redirect:/complaint/list";
     }
 }
