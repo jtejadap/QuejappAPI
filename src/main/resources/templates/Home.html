@@ -11,14 +11,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
      <!-- Estilos personalizados-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body class="regular">    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <header id="barradenavegacion" class="p-3 mb-3 border-bottom">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+            <a href="/static" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
               <h4 class="text-white bold">QUEJAPP</h4>
             </a>
 
@@ -35,7 +35,11 @@
                 <li><a class="dropdown-item" href="#">Configuración</a></li>
                 <li><a class="dropdown-item" href="#">Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                  <li>
+                      <form class="dropdown-item" th:action="@{/logout}" method="post">
+                          <input type="submit" value="Sign Out"/>
+                      </form>
+                  </li>
               </ul>
             </div>
           </div>
@@ -44,7 +48,7 @@
     
     <div class="container">
         <div class="row mb-2">
-            <img src="assets/castillo.jpeg" class="img-fluid" alt="...">
+            <img src="/assets/castillo.jpeg" class="img-fluid" alt="...">
         </div>
         <div class="row mb-3">
             <h1>Bienvenido</h1>

@@ -21,7 +21,11 @@
                         <li><a class="dropdown-item" href="#">Configuración</a></li>
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                        <li>
+                            <form class="dropdown-item" th:action="@{/logout}" method="post">
+                                <input type="submit" value="Sign Out"/>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -82,4 +82,9 @@ public class QuejaController {
         repositorio.delete(optionalQueja.get());
         return "redirect:/complaint/list";
     }
+
+    @GetMapping("/login")
+    String login() {
+        return "Login";
+    }
 }
