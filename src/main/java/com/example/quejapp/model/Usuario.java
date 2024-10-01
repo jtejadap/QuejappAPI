@@ -1,15 +1,16 @@
 package com.example.quejapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Date;
-import java.util.Objects;
+import java.io.Serializable;
+import java.util.*;
 
 
 @Entity
-public class Usuario {
+public class Usuario implements UserDetails,Serializable {
     private @Id
     @GeneratedValue Long id;
     private String nombre;
@@ -18,7 +19,8 @@ public class Usuario {
     private String email;
     private Date fechaNacimiento;
     private Integer genero;
-    private String rol;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
     private String password;
 
     public Usuario(){}
@@ -30,7 +32,7 @@ public class Usuario {
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
-        this.rol = rol;
+        this.rol = Rol.valueOf(rol);
     }
 
 
@@ -99,12 +101,47 @@ public class Usuario {
     }
 
     public String getRol() {
-        return rol;
+        return rol.name();
     }
 
     public void setRol(String rol) {
-        this.rol = rol;
+        this.rol = Rol.valueOf(rol);
     }
+
+    // Implementacion de UserDetails (Spring boot Security)
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> roles = new ArrayList<>();
+        roles.add(new SimpleGrantedAuthority("ROLE_"+rol.name()));
+        return roles;
+    }
+
+    @Override
+    public String getUsername() {
+        return usuario;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    // Implementacion de Serializable
 
     @Override
     public boolean equals(Object o) {
