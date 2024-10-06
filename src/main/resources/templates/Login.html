@@ -13,20 +13,44 @@
     <!-- Estilos personalizados-->
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="regular">
+<body class="regular fondo-gris">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <div class="container">
-    <div class="row" th:if="${param.error}">
-        Invalid username and password.
+    <div class="row">
+        <div class="col-12">
+            <form class="row caja-iniciar-sesion" th:action="@{/login}" method="post">
+                <div class="mb-3">
+                    <h3 class="kanit-bold naranja-transcaribe-fuente">QUEJAPP</h3>
+                </div>
+                <div class="mb-3">
+                    <label for="usernameField" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usernameField" name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="passwordField" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="passwordField" name="password">
+                </div>
+                <div class="mb-3" th:if="${param.error}">
+                    (*) Usuario y contraseña no validos.
+                </div>
+                <div class="mb-3" th:if="${param.logout}">
+                    (*) Sesión finalizada.
+                </div>
+                <div class="mb-3">
+                    <p>¿No tienes cuenta? <a href="/signin">¡registrate!</a></p>
+                </div>
+                <div class="col-12">
+                    <div class="row justify-content-end">
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary naranja-transcaribe" value="Sign In">Ingresar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
     </div>
-    <div class="row" th:if="${param.logout}">
-        You have been logged out.
-    </div>
-    <form class="row" th:action="@{/login}" method="post">
-        <div><label> User Name : <input type="text" name="username"/> </label></div>
-        <div><label> Password: <input type="password" name="password"/> </label></div>
-        <div><input type="submit" value="Sign In"/></div>
-    </form>
 </div>
 
 </body>

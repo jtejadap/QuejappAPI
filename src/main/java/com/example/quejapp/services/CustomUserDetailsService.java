@@ -1,5 +1,6 @@
 package com.example.quejapp.services;
 
+import com.example.quejapp.model.Usuario;
 import com.example.quejapp.model.repositories.QuejaRepository;
 import com.example.quejapp.model.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return usuarioRepository.findByUsuario(username);
+        Usuario usuario = usuarioRepository.findByNickname(username);
+        if (usuario == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+        return usuario;
     }
 }

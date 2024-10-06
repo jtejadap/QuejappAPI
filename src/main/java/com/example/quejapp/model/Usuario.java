@@ -1,34 +1,54 @@
 package com.example.quejapp.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.util.*;
 
 
 @Entity
-public class Usuario implements UserDetails,Serializable {
+public class Usuario implements UserDetails{
     private @Id
     @GeneratedValue Long id;
+
+    @NotNull(message="Nombres con un campo obligatorio.")
+    @Size(min=2, max=255, message = "Nombres debe tener un minimo de información para ser valida.")
     private String nombre;
+
+    @NotNull(message="Apellidos con un campo obligatorio")
+    @Size(min=2, max=255, message = "Apellidos debe tener un minimo de información para ser valida.")
     private String apellido;
-    private String usuario;
+
+    @NotNull(message="Usuario es un campo obligatorio.")
+    @Size(min=2, max=255, message = "Usuario debe tener un minimo de información para ser valida.")
+    private String nickname;
+
     private String email;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaNacimiento;
+
+    @NotNull(message="Debe seleccionar genero")
     private Integer genero;
+
     @Enumerated(EnumType.STRING)
     private Rol rol;
+
+    @NotNull(message="contraseña es un campo obligatorio.")
+    @Size(min=2, max=255, message = "contraseña debe tener un minimo de información para ser valida.")
     private String password;
 
     public Usuario(){}
 
-    public Usuario(String nombre, String apellido, String usuario, String email, Date fechaNacimiento, Integer genero, String rol) {
+    public Usuario(String nombre, String apellido, String nickname, String email, Date fechaNacimiento, Integer genero, String rol) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.usuario = usuario;
+        this.nickname = nickname;
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
@@ -60,12 +80,12 @@ public class Usuario implements UserDetails,Serializable {
         this.apellido = apellido;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getEmail() {
@@ -118,7 +138,7 @@ public class Usuario implements UserDetails,Serializable {
 
     @Override
     public String getUsername() {
-        return usuario;
+        return nickname;
     }
 
     @Override
@@ -149,7 +169,7 @@ public class Usuario implements UserDetails,Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario1 = (Usuario) o;
         return Objects.equals(id, usuario1.id) && Objects.equals(nombre, usuario1.nombre)
-                && Objects.equals(apellido, usuario1.apellido) && Objects.equals(usuario, usuario1.usuario)
+                && Objects.equals(apellido, usuario1.apellido) && Objects.equals(nickname, usuario1.nickname)
                 && Objects.equals(email, usuario1.email) && Objects.equals(fechaNacimiento, usuario1.fechaNacimiento)
                 && Objects.equals(genero, usuario1.genero) && Objects.equals(password, usuario1.password)
                 && Objects.equals(rol, usuario1.rol);
@@ -157,7 +177,7 @@ public class Usuario implements UserDetails,Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellido, usuario, email, fechaNacimiento, genero, password, rol);
+        return Objects.hash(id, nombre, apellido, nickname, email, fechaNacimiento, genero, password, rol);
     }
 
     @Override
@@ -166,7 +186,7 @@ public class Usuario implements UserDetails,Serializable {
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
-                ", usuario='" + usuario + '\'' +
+                ", usuario='" + nickname + '\'' +
                 ", rol='" + rol + '\'' +
                 ", email='" + email + '\'' +
                 ", fechaNacimiento=" + fechaNacimiento +

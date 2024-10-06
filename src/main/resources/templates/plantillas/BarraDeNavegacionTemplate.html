@@ -1,33 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 <body>
-    <header th:fragment="navbar" id="barradenavegacion" class="p-3 mb-3 border-bottom">
+    <header th:fragment="navbar" class="p-3 mb-3 border-bottom naranja-transcaribe sticky-top">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                    <h4 class="text-white bold">QUEJAPP</h4>
+                    <h4 class="text-white kanit-bold">QUEJAPP</h4>
                 </a>
-
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-1">
-                    <li><a href="/complaint" class="nav-link px-2 link-secondary text-white">Nuevo</a></li>
+                    <li><a href="/complaint/new" class="nav-link px-2 link-secondary text-white">Nuevo</a></li>
                     <li><a href="/complaint/list" class="nav-link px-2 link-secondary text-white">Incidentes</a></li>
                 </ul>
 
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" href="#">Configuración</a></li>
-                        <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <form class="dropdown-item" th:action="@{/logout}" method="post">
-                                <input type="submit" value="Sign Out"/>
-                            </form>
-                        </li>
-                    </ul>
+                <div class="text-end" sec:authorize="!isAuthenticated()">
+                    <a href="/login" class="btn btn-outline-light me-2">Iniciar</a>
+                    <a href="/signup" class="btn btn-warning">Registrarse</a>
                 </div>
+
+                <div class="dropdown text-end"  sec:authorize="isAuthenticated()">
+                    <button th:text="${'Bienvenido '+ #authentication.name}" type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 text-white">
+                    </button>
+                </div>
+                <form sec:authorize="isAuthenticated()" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-outline-light me-2" value="Sign Out">
+                        Salir
+                    </button>
+                </form>
+
             </div>
         </div>
     </header>

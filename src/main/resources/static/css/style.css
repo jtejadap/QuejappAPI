@@ -1,37 +1,49 @@
-.light {
-    font-family: "Hind Siliguri", system-ui;
+/*
+Importe de Fuente Kanit
+*/
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300;400;700&display=swap');
+
+.kanit-light {
+    font-family: "Kanit", sans-serif;
     font-weight: 300;
     font-style: normal;
 }
-  
-.regular {
-    font-family: "Hind Siliguri", system-ui;
+
+.kanit-regular {
+    font-family: "Kanit", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
-  
-.medium {
-    font-family: "Hind Siliguri", system-ui;
-    font-weight: 500;
-    font-style: normal;
-}
-  
-.semibold {
-    font-family: "Hind Siliguri", system-ui;
-    font-weight: 600;
-    font-style: normal;
-}
-  
-.bold {
-    font-family: "Hind Siliguri", system-ui;
+
+.kanit-bold {
+    font-family: "Kanit", sans-serif;
     font-weight: 700;
     font-style: normal;
 }
-
   
-#barradenavegacion{
-    background-color: #F18A2B;
-}
 .naranja-transcaribe{
     background-color: #F18A2B;
+}
+.naranja-transcaribe-fuente{
+    color: #F18A2B;
+}
+.fondo-gris{
+    background-color: #fafafa;
+}
+.sticky-top{
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+.caja-iniciar-sesion{
+    position: relative;
+    max-width: 440px;
+    width: calc(100% - 40px);
+    padding: 44px;
+    margin: 10ch auto 28px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    min-width: 320px;
+    min-height: 338px;
+    overflow: hidden;
 }

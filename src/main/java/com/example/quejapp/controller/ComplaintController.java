@@ -2,8 +2,6 @@ package com.example.quejapp.controller;
 
 import com.example.quejapp.model.Queja;
 import com.example.quejapp.model.repositories.QuejaRepository;
-import com.example.quejapp.model.repositories.UsuarioRepository;
-import com.example.quejapp.util.UsuarioModelAssembler;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-import static org.thymeleaf.spring6.util.FieldUtils.hasErrors;
-
 @Controller
-public class QuejaController {
+@RequestMapping("/complaint")
+public class ComplaintController {
     private final QuejaRepository repositorio;
 
-    public QuejaController(QuejaRepository repository) {
+    public ComplaintController(QuejaRepository repository) {
         this.repositorio = repository;
     }
 
@@ -28,19 +25,19 @@ public class QuejaController {
         return this.repositorio.findAll();
     }
 
-    @RequestMapping("/complaint/list")
+    @RequestMapping("/list")
     public String listarQuejas() {
         return "QuejasListado";
     }
 
 
-    @GetMapping("/complaint")
+    @GetMapping("/new")
     public String crearQueja(Model model) {
         model.addAttribute("queja", new Queja());
         return "QuejaFormulario";
     }
 
-    @PostMapping("/complaint")
+    @PostMapping("/save")
     public String guardarQueja(@Valid Queja queja, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "QuejaFormulario";
@@ -50,7 +47,7 @@ public class QuejaController {
         return "QuejaCompletada";
     }
 
-    @GetMapping("/complaint/{id}")
+    @GetMapping("/edit/{id}")
     public String buscarQueja(@PathVariable Long id, Model model) {
         Optional<Queja> optionalQueja = repositorio.findById(id);
         if (!optionalQueja.isPresent()) {
@@ -62,7 +59,7 @@ public class QuejaController {
         return "QuejaModificar";
     }
 
-    @PostMapping("/complaint/{id}")
+    @PostMapping("/edit/{id}")
     public String modificarQueja(@PathVariable Long id,@Valid Queja queja, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "QuejaModificar";
@@ -72,7 +69,7 @@ public class QuejaController {
         return "QuejaCompletada";
     }
 
-    @GetMapping("/complaint/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String eliminarQueja(@PathVariable Long id, Model model) {
         Optional<Queja> optionalQueja = repositorio.findById(id);
         if (!optionalQueja.isPresent()) {
@@ -81,10 +78,5 @@ public class QuejaController {
         }
         repositorio.delete(optionalQueja.get());
         return "redirect:/complaint/list";
-    }
-
-    @GetMapping("/login")
-    String login() {
-        return "Login";
     }
 }

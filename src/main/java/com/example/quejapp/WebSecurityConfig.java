@@ -2,6 +2,7 @@ package com.example.quejapp;
 
 import com.example.quejapp.model.Rol;
 import com.example.quejapp.services.CustomUserDetailsService;
+import com.example.quejapp.util.CustomAuthenticationSuccesHandler;
 import org.apache.coyote.Adapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -33,12 +35,16 @@ public class WebSecurityConfig  {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/complaint/**").hasRole(Rol.USER.toString())
-                        .requestMatchers("/","/home").permitAll()
+                        .requestMatchers("/complaint/**").hasAnyRole(Rol.USER.name(), Rol.ADMINISTRATOR.name(), Rol.MODERATOR.name())
+                        .requestMatchers("/user/**").hasAnyRole(Rol.USER.name(), Rol.ADMINISTRATOR.name(), Rol.MODERATOR.name())
+                        .requestMatchers("/administrator/**").hasRole(Rol.ADMINISTRATOR.name())
+                        .requestMatchers("/moderator/**").hasRole(Rol.MODERATOR.name())
+                        .requestMatchers("/","/home","/signup").permitAll()
                         .requestMatchers(pathsToStaticResources).permitAll()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
+                        .successHandler(new CustomAuthenticationSuccesHandler())
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll());
@@ -54,5 +60,10 @@ public class WebSecurityConfig  {
     @Bean
     BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler customSuccessHandler() {
+        return new CustomAuthenticationSuccesHandler();
     }
 }
