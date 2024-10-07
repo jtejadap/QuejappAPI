@@ -9,7 +9,7 @@
     <!-- Estilos personalizados-->
     <link rel="stylesheet" href="/css/style.css">
   </head>
-  <body class="regular">    
+  <body class="regular fondo-card">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <header class="p-3 mb-3 border-bottom naranja-transcaribe sticky-top">
         <div class="container">
@@ -42,41 +42,74 @@
         </div>
       </header>
     
-    <div class="container">
-        <div class="row mb-2">
-            <img src="/assets/castillo.jpeg" class="img-fluid" alt="...">
+    <div class="container text-center">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/Transcaribe.jpeg" class="d-block w-100" height="350px">
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <div class="row mb-3">
-            <h1>Bienvenido</h1>
-            <p>Quejapp es una aplicación web  para el reporte de incidentes  en el Sistema de Transporte Masivo de la Ciudad de cartagena (Transcaribe).</p>
+
+
+        <h1 class="text-center" b>Bienvenidos</b> </h1>
+        <p>Quejapp es una aplicacion web para el reporte de incidentes en el sistema de transportes masivos de la ciudad de cartagena (Transcaribe). </p>
+
+        <h2 class="text-center" b>Caracteristicas</b> </h2>
+
+        <div class="row mb-4">
+            <div class="col-3">
+                <div class="card">
+                    <img src="/assets/Clasificacion.svg" class="card-img-top pt-3" alt="..." width="100px" height="100px">
+                    <div class="card-body">
+                        <h5 class="card-title">Clasificación de incidentes</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="/assets/Reporte.svg" alt="..." class="card-img-top pt-3" width="100px" height="100px">
+                    <div class="card-body">
+                        <h5 class="card-title">Reporte de quejas e incidentes</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="/assets/Sumatoria.svg" alt="..." class="card-img-top pt-3" width="100px" height="100px">
+                    <div class="card-body">
+                        <h5 class="card-title">Sumarización de incidentes</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="/assets/Solucion.svg" alt="..." class="card-img-top pt-3" width="100px" height="100px">
+                    <div class="card-body">
+                        <h5 class="card-title">Informes de casos solucionados</h5>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row  text-center align-items-center">
-            <div class="col-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
-                </svg>        
-                <p>Clasificación y  organización de incidentes.</p>              
-            </div>
-            <div class="col-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
-                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
-                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
-                  </svg>
-                <p>Informe de Casos Solucionados.</p>
-            </div>
-            <div class="col-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-hand-thumbs-down-fill" viewBox="0 0 16 16">
-                    <path d="M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591"/>
-                </svg>    
-                <p>Reporte de Quejas e Incidentes.</p>              
-            </div>
-            <div class="col-3">
-                <svg xmlns="http://www.w3.org/2000/svg"  width="140" height="140" fill="currentColor" class="bi bi-pie-chart" viewBox="0 0 16 16">
-                    <path d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793zm1 0V7.5h6.482A7 7 0 0 0 8.5 1.018M14.982 8.5H8.207l-4.79 4.79A7 7 0 0 0 14.982 8.5M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8"/>
-                </svg>
-                <p>Sumarización y  Presentación de incidentes.</p>              
-            </div>            
-          </div>
     </div>
       
   </body>

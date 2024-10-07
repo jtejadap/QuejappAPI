@@ -30,6 +30,9 @@ Importe de Fuente Kanit
 .fondo-gris{
     background-color: #fafafa;
 }
+.fondo-card{
+    background-color: #eff2ef;
+}
 .sticky-top{
     position: sticky;
     top: 0;
