@@ -60,3 +60,19 @@ Importe de Fuente Kanit
     margin-left: -.25rem;
     overflow-y: auto;
 }
+
+.item-height{
+    height: 50vh;
+}
+
+.item-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50vh;
+    filter: blur(8px)
+}
+
+.divider-margin{
+    margin: 5rem 0;
+}
