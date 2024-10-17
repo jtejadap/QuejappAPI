@@ -30,6 +30,10 @@ public class Queja {
     @Size(min=2, max=255, message = "la ubicación debe tener un minimo de información para ser valida.")
     private String ubicacion;
     private Long usuarioId;
+    private Date fechaRespuesta;
+    private Long encargado;
+    private Integer estado;
+    private String respuesta;
 
     public Queja() {
         this.fecha = new Date();
@@ -90,6 +94,38 @@ public class Queja {
         this.usuarioId = usuarioId;
     }
 
+    public Date getFechaRespuesta() {
+        return fechaRespuesta;
+    }
+
+    public void setFechaRespuesta(Date fechaRespuesta) {
+        this.fechaRespuesta = fechaRespuesta;
+    }
+
+    public Long getEncargado() {
+        return encargado;
+    }
+
+    public void setEncargado(Long encargado) {
+        this.encargado = encargado;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,12 +133,14 @@ public class Queja {
         Queja queja = (Queja) o;
         return Objects.equals(id, queja.id) && Objects.equals(fecha, queja.fecha) && Objects.equals(descripcion, queja.descripcion)
                 && Objects.equals(tipoQueja, queja.tipoQueja) && Objects.equals(ubicacion, queja.ubicacion)
-                && Objects.equals(usuarioId, queja.usuarioId);
+                && Objects.equals(usuarioId, queja.usuarioId) && Objects.equals(fechaRespuesta, queja.fechaRespuesta)
+                && Objects.equals(encargado, queja.encargado)  && Objects.equals(estado, queja.estado)
+                && Objects.equals(respuesta, queja.respuesta);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fecha, descripcion, tipoQueja, ubicacion, usuarioId);
+        return Objects.hash(id, fecha, descripcion, tipoQueja, ubicacion, usuarioId, fechaRespuesta, encargado, estado, respuesta);
     }
 
     @Override
@@ -114,6 +152,10 @@ public class Queja {
                 ", TipoQueja=" + tipoQueja +
                 ", ubicacion='" + ubicacion + '\'' +
                 ", usuarioId=" + usuarioId +
+                ", fechaRespuesta=" + fechaRespuesta +
+                ", encargado=" + encargado +
+                ", estado='" + estado + '\'' +
+                ", respuesta='" + respuesta + '\'' +
                 '}';
     }
 }

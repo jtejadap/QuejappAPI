@@ -29,12 +29,12 @@ class LoadDatabase {
         return args -> {
             Usuario usuario1 = new Usuario("Carlos", "Peres", "CPerez", "cprez@demo.com", new Date(), 1,"USER");
             usuario1.setPassword(passwordEncoder.encode("123456"));
-            Usuario usuario2 = new Usuario("Andrea", "Amaya", "AMaya", "AAmaya@demo.com", new Date(), 2,"MODERATOR");
+            Usuario usuario2 = new Usuario("Andrea", "Amaya", "AMaya", "AAmaya@demo.com", new Date(), 2,"ADMINISTRATOR");
             usuario2.setPassword(passwordEncoder.encode("123456"));
             log.info("Cargando " + repositorio.save(usuario1));
             log.info("Cargando " + repositorio.save(usuario2));
             log.info("Cargando " + quejas.save(new Queja(new Date(), "Reporte de Servio al Cliente", 1,"Estacion Centro", 1L)));
-            log.info("Cargando " + quejas.save(new Queja(new Date(), "Reporte de Falla en el servicio", 2,"Estacion Portal", 2L)));
+            log.info("Cargando " + quejas.save(new Queja(new Date(), "Reporte de Falla en el servicio", 2,"Estacion Portal", 1L)));
             log.info("Cargando " + quejas.save(new Queja(new Date(), "Reporte de Retraso en el servicio", 3,"Av. El Consulado" ,1L)));
         };
     }

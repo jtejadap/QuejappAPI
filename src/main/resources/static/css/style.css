@@ -3,6 +3,12 @@ Importe de Fuente Kanit
 */
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300;400;700&display=swap');
 
+/*
+Importe de Fuente Montserrat
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 .kanit-light {
     font-family: "Kanit", sans-serif;
     font-weight: 300;
@@ -20,18 +26,36 @@ Importe de Fuente Kanit
     font-weight: 700;
     font-style: normal;
 }
-  
+
+.montserrat-regular {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.montserrat-medium {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.montserrat-bold{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
 .naranja-transcaribe{
     background-color: #F18A2B;
 }
 .naranja-transcaribe-fuente{
     color: #F18A2B;
 }
-.fondo-gris{
-    background-color: #fafafa;
-}
-.fondo-card{
-    background-color: #eff2ef;
+.color-fondo{
+    background-color: #F4F6FA;
 }
 .sticky-top{
     position: sticky;
