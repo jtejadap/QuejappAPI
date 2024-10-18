@@ -35,7 +35,13 @@ class LoadDatabase {
             log.info("Cargando " + repositorio.save(usuario2));
             log.info("Cargando " + quejas.save(new Queja(new Date(), "Reporte de Servio al Cliente", 1,"Estacion Centro", 1L)));
             log.info("Cargando " + quejas.save(new Queja(new Date(), "Reporte de Falla en el servicio", 2,"Estacion Portal", 1L)));
-            log.info("Cargando " + quejas.save(new Queja(new Date(), "Reporte de Retraso en el servicio", 3,"Av. El Consulado" ,1L)));
+            log.info("Cargando " + quejas.save(new Queja(
+                    new Date(),
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id posuere massa. In volutpat vulputate metus, et bibendum ex. Donec ac nisi consectetur, volutpat mauris fringilla, hnterdum neque. Maecenas ac scelerisque metus.",
+                    3,
+                    "Av. El Consulado" ,
+                    1L))
+            );
         };
     }
 }

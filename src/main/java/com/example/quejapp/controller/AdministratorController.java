@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -22,6 +23,11 @@ public class AdministratorController {
 
     public AdministratorController(AttendantService servicio) {
         this.servicio = servicio;
+    }
+
+    @ModelAttribute("reportes")
+    public List<ReportDTO> listarQuejas() {
+        return servicio.listarQuejas();
     }
 
     @GetMapping("/dashboard")
@@ -48,10 +54,8 @@ public class AdministratorController {
             model.addAttribute("reporte", reporte);
             return "AtenderQueja";
         }
-
-        Queja actualizada = servicio.actualizarQueja(id, atender);
-        model.addAttribute("queja", actualizada);
-        return "QuejaCompletada";
+        servicio.actualizarQueja(id, atender);
+        return "redirect:/attendant/dashboard";
     }
 
 

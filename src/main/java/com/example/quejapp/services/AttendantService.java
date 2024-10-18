@@ -4,6 +4,7 @@ import com.example.quejapp.DTOs.AttendDTO;
 import com.example.quejapp.DTOs.ReportDTO;
 import com.example.quejapp.model.Queja;
 import com.example.quejapp.model.repositories.QuejaRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -16,6 +17,10 @@ public class AttendantService {
 
     public AttendantService(QuejaRepository repositorioQuejas) {
         this.repositorioDeQuejas = repositorioQuejas;
+    }
+
+    public List<ReportDTO> listarQuejas(){
+        return repositorioDeQuejas.findComplaintReportOrdered();
     }
 
     public ReportDTO buscarQuejaPorId(Long id){

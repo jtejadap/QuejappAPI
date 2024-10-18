@@ -20,7 +20,10 @@
         <div class="col-12">
             <form class="row caja-iniciar-sesion" th:action="@{/login}" method="post">
                 <div class="mb-3">
-                    <h3 class="kanit-bold naranja-transcaribe-fuente">QUEJAPP</h3>
+                    <a class="quit-underline" href="/">
+                        <h3 class="kanit-bold naranja-transcaribe-fuente">QUEJAPP</h3>
+                    </a>
+
                 </div>
                 <div class="mb-3">
                     <label for="usernameField" class="form-label">Usuario</label>
@@ -31,7 +34,7 @@
                     <input type="password" class="form-control" id="passwordField" name="password">
                 </div>
                 <div class="mb-3" th:if="${param.error}">
-                    (*) Usuario y contraseña no validos.
+                    (*) Usuario y contraseña no válidos.
                 </div>
                 <div class="mb-3" th:if="${param.logout}">
                     (*) Sesión finalizada.

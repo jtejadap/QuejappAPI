@@ -126,6 +126,31 @@ public class ReportDTO {
         this.respuesta = respuesta;
     }
 
+    public String obtenerNombreEstado() {
+        if (estado == null){
+            estado = 0;
+        }
+        return switch (estado) {
+            case 1 -> "Nuevo";
+            case 2 -> "Revisión";
+            case 3 -> "Solucionado";
+            default -> "Sin asignar";
+        };
+    }
+
+    public String obtenerClaseEstado() {
+        if (estado == null){
+            estado = 0;
+        }
+        return switch (estado) {
+            case 1 -> "text-bg-primary";
+            case 2 -> "text-bg-warning";
+            case 3 -> "text-bg-success";
+            default -> "text-bg-secondary";
+        };
+    }
+
+
     public String obtenerNombreTipoQueja() {
         return switch (tipoQueja) {
             case 1 -> "Servicio al Cliente";

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 
+import java.util.List;
 import java.util.Optional;
 
 public interface QuejaRepository extends JpaRepository<Queja, Long> {
@@ -14,4 +15,12 @@ public interface QuejaRepository extends JpaRepository<Queja, Long> {
             + " where complaint.usuarioId= u.id "
             + " and complaint.id=?1 ")
     Optional<ReportDTO> findComplaintReportById(Long id);
+
+    @Query(value = "SELECT new com.example.quejapp.DTOs.ReportDTO(" +
+            "complaint.id,complaint.fecha,u.nombre, u.apellido, substring(complaint.descripcion,1 ,100) , complaint.tipoQueja," +
+            " complaint.ubicacion, complaint.fechaRespuesta, complaint.estado, complaint.respuesta)"
+            + " from Queja complaint, Usuario u "
+            + " where complaint.usuarioId= u.id "
+            + " order by complaint.fecha desc , complaint.estado")
+    List<ReportDTO> findComplaintReportOrdered();
 }

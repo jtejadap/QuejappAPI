@@ -57,6 +57,15 @@ Importe de Fuente Montserrat
 .color-fondo{
     background-color: #F4F6FA;
 }
+.color-fondo-etiqueta{
+    background-color: #fcf6ed;
+}
+.color-usuario{
+    color: #f2af74;
+}
+.color-queja{
+    color:#74adf2;
+}
 .sticky-top{
     position: sticky;
     top: 0;
@@ -99,4 +108,8 @@ Importe de Fuente Montserrat
 
 .divider-margin{
     margin: 5rem 0;
+}
+
+.quit-underline{
+    text-decoration: none;
 }

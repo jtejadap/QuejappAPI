@@ -20,7 +20,8 @@ public class Queja {
     private Date fecha;
 
     @NotNull(message="La descripción es un campo obligatorio, por favor comentenos su incidente.")
-    @Size(min=2, max=255,  message="la descripcion debe tener un minimo de información para ser valida.")
+    @Size(min=2,  message="la descripcion debe tener un minimo de información para ser valida.")
+    @Size(max=255,  message="la descripcion debe contener maximo 255 caracteres.")
     private String descripcion;
 
     @NotNull(message="Debe seleccionar el tipo de incidente")

@@ -60,7 +60,12 @@ public class ComplaintController {
     }
 
     @PostMapping("/edit/{id}")
-    public String modificarQueja(@PathVariable Long id,@Valid Queja queja, BindingResult bindingResult, Model model) {
+    public String modificarQueja(
+            @PathVariable Long id,
+            @Valid Queja queja,
+            BindingResult bindingResult, 
+            Model model
+    ) {
         if (bindingResult.hasErrors()) {
             return "QuejaModificar";
         }
