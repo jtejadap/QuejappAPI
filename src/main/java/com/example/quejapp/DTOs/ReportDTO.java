@@ -152,6 +152,9 @@ public class ReportDTO {
 
 
     public String obtenerNombreTipoQueja() {
+        if (tipoQueja == null){
+            tipoQueja = 0;
+        }
         return switch (tipoQueja) {
             case 1 -> "Servicio al Cliente";
             case 2 -> "Falla en el Servicio";

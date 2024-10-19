@@ -33,7 +33,13 @@ class LoadDatabase {
             usuario2.setPassword(passwordEncoder.encode("123456"));
             log.info("Cargando " + repositorio.save(usuario1));
             log.info("Cargando " + repositorio.save(usuario2));
-            log.info("Cargando " + quejas.save(new Queja(new Date(), "Reporte de Servio al Cliente", 1,"Estacion Centro", 1L)));
+            log.info("Cargando " + quejas.save(new Queja(
+                    new Date(),
+                    "Se me quedo un bolso en la estación centro pero me acerco a la portería para recuperarlo y me dicen que no es problema de ellos que podría acércame a la sede de gerencia ubicada en el portal para mas detalles",
+                    1,
+                    "Estacion Centro",
+                    1L))
+            );
             log.info("Cargando " + quejas.save(new Queja(new Date(), "Reporte de Falla en el servicio", 2,"Estacion Portal", 1L)));
             log.info("Cargando " + quejas.save(new Queja(
                     new Date(),

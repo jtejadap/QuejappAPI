@@ -3,8 +3,9 @@ package com.example.quejapp.services;
 import com.example.quejapp.DTOs.AttendDTO;
 import com.example.quejapp.DTOs.ReportDTO;
 import com.example.quejapp.model.Queja;
+import com.example.quejapp.model.Usuario;
 import com.example.quejapp.model.repositories.QuejaRepository;
-import org.springframework.data.domain.Sort;
+import com.example.quejapp.model.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -14,9 +15,14 @@ import java.util.Optional;
 @Service
 public class AttendantService {
     private final QuejaRepository repositorioDeQuejas;
+    private final UsuarioRepository repositorioDeUsuarios;
 
-    public AttendantService(QuejaRepository repositorioQuejas) {
+    public AttendantService(
+            QuejaRepository repositorioQuejas,
+            UsuarioRepository repositorioDeUsuarios
+    ) {
         this.repositorioDeQuejas = repositorioQuejas;
+        this.repositorioDeUsuarios = repositorioDeUsuarios;
     }
 
     public List<ReportDTO> listarQuejas(){
@@ -28,15 +34,19 @@ public class AttendantService {
         return reporte.orElse(null);
     }
 
-    public Queja actualizarQueja(Long id, AttendDTO cambios){
+    public void actualizarQueja(Long id, AttendDTO cambios, String nickname){
         Optional<Queja> reporteOpcion = repositorioDeQuejas.findById(id);
+
         if(reporteOpcion.isEmpty()){
-            return null;
+            return;
         }
+        Usuario usuario = repositorioDeUsuarios.findByNickname(nickname);
+
         Queja queja = reporteOpcion.get();
+        queja.setEncargado(usuario.getId());
         queja.setEstado(cambios.getEstado());
         queja.setRespuesta(cambios.getRespuesta());
         queja.setFechaRespuesta(new Date());
-        return repositorioDeQuejas.save(queja);
+        repositorioDeQuejas.save(queja);
     }
 }

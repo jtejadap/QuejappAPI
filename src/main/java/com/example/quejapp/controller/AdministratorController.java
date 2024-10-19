@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,13 +49,19 @@ public class AdministratorController {
     }
 
     @PostMapping("/manage/{id}")
-    public String modificarQueja(@PathVariable Long id, @Valid @ModelAttribute("atender") AttendDTO atender, BindingResult bindingResult, Model model) {
+    public String modificarQueja(
+            Principal principal,
+            @PathVariable Long id,
+            @Valid @ModelAttribute("atender") AttendDTO atender,
+            BindingResult bindingResult,
+            Model model
+    ) {
         if (bindingResult.hasErrors()) {
             ReportDTO reporte = servicio.buscarQuejaPorId(id);
             model.addAttribute("reporte", reporte);
             return "AtenderQueja";
         }
-        servicio.actualizarQueja(id, atender);
+        servicio.actualizarQueja(id, atender, principal.getName());
         return "redirect:/attendant/dashboard";
     }
 

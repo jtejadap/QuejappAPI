@@ -21,7 +21,7 @@
         <hr>
         <div class="row">
             <div class="col-12">
-                <form action="#" th:action="@{/complaint/save}" th:object="${queja}" method="post" class="row">
+                <form action="#" th:action="@{/user/complaint}" th:object="${queja}" method="post" class="row">
                     <div class="mb-3 col-6">
                       <label for="fechaCampo" class="form-label">Fecha</label>
                       <input type="date" th:field="*{fecha}" th:value="*{fecha}" class="form-control" id="fechaCampo" disabled>
