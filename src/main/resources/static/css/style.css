@@ -113,3 +113,10 @@ Importe de Fuente Montserrat
 .quit-underline{
     text-decoration: none;
 }
+
+.error-font-size{
+    font-size: 20vh;
+}
+.error-button-size{
+    width: 10vh;
+}
