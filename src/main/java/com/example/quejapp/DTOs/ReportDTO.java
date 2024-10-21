@@ -162,4 +162,19 @@ public class ReportDTO {
             default -> "Otros";
         };
     }
+
+    public String obtenerNombreCompleto(){
+        if(nombres != null){
+            return apellidos+" "+nombres;
+        }
+        return "Sin asignar";
+    }
+
+    public String obtenerRespuesta(){
+        if(respuesta!= null){
+            return respuesta;
+        }
+        return "Sin asignar";
+    }
+
 }
