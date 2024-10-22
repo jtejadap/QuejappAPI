@@ -27,6 +27,8 @@ class LoadDatabase {
     CommandLineRunner initDatabase(UsuarioRepository repositorio, QuejaRepository quejas) {
 
         return args -> {
+            /*
+            //datos semilla para llenar la BD en caso de estar recien creada
             Usuario usuario1 = new Usuario("Carlos", "Peres", "CPerez", "cprez@demo.com", new Date(), 1,"USER");
             usuario1.setPassword(passwordEncoder.encode("123456"));
             Usuario usuario2 = new Usuario("Andrea", "Amaya", "AMaya", "AAmaya@demo.com", new Date(), 2,"ADMINISTRATOR");
@@ -48,6 +50,7 @@ class LoadDatabase {
                     "Av. El Consulado" ,
                     1L))
             );
+            */
         };
     }
 }

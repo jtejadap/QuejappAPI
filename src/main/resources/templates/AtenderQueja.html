@@ -13,12 +13,12 @@
     <!-- Estilos personalizados-->
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="montserrat-regular color-fondo">
+<body class="color-fondo">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <div th:replace="~{/plantillas/BarraDeNavegacionTemplate :: navbar}"></div>
 
-<div class="container mb-3">
+<div class="container mb-3 montserrat-regular">
     <div class="row">
         <div class="col-6">
             <div class="card h-100 p-4">
@@ -28,9 +28,9 @@
                 <p><span class="montserrat-medium" th:text="'Tipo: '"></span><span th:text="${reporte.obtenerNombreTipoQueja()}"></span></p>
                 <p><span class="montserrat-medium" th:text="'Ubicación: '"></span><span th:text="${reporte.ubicacion}"></span></p>
                 <p><span class="montserrat-medium" th:text="'Descripción: '"></span><span th:text="${reporte.descripcion}"></span></p>
-                <a class="btn btn-outline-secondary" href="/attendant/dashboard" role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
+                <a class="btn btn-outline-secondary back-button-size my-2" href="/attendant/dashboard" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                     </svg>
                     Volver
                 </a>

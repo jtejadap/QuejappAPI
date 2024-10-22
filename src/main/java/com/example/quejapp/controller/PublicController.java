@@ -54,6 +54,13 @@ public class PublicController {
         return "ErrorAccessDenied";
     }
 
+    @GetMapping("/dashboard")
+    public String redireccionarDashboard(Principal principal) {
+        return "redirect:" + servicio.returnHomeLinkByRole(principal);
+    }
+
+
+    //Testing para mensaje para error 500
     @GetMapping("/test")
     public String dashboard() {
         throw new RuntimeException("Excepción controlada");
